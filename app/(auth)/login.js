@@ -1,18 +1,12 @@
-// Navigation for Forgot Password and Signup
-import React from 'react';
-import { View, Text, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
-const LoginScreen = () => {
-    const navigation = useNavigation();
-
+// Updated the navigation link for 'Forgot Password?'
+const loginPage = () => {
     return (
-        <View>
-            <Text>Login Screen</Text>
-            <Button title='Forgot Password' onPress={() => navigation.navigate('(auth)/forgot-password')} />
-            <Button title='Signup' onPress={() => navigation.navigate('(auth)/signup')} />
-        </View>
+        <div>
+            <p>
+                <a href="(auth)/forgot-password">Forgot Password?</a>
+            </p>
+        </div>
     );
 };
 
-export default LoginScreen;
+export default loginPage;

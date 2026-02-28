@@ -1,27 +1,17 @@
-// Sign-Up Screen
-import { useState } from 'react';
-import { supabase } from '../../services/supabase';
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const Signup = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleSignup = async () => {
-        const { user, error } = await supabase.auth.signUp({
-            email,
-            password,
-        });
-        if (error) console.log('Error signing up:', error);
-        else console.log('User signed up:', user);
-    };
+const SignupScreen = () => {
+    const navigation = useNavigation();
 
     return (
-        <div>
-            <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={handleSignup}>Sign Up</button>
-        </div>
+        <View>
+            <Text>Signup Screen</Text>
+            {/* Add your signup form here */}
+            <Button title="Go to Login" onPress={() => navigation.navigate('Login')} />
+        </View>
     );
 };
 
-export default Signup;
+export default SignupScreen;

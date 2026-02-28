@@ -1,27 +1,18 @@
-// Log-In Screen for Supabase Authentication
-import { useState } from 'react';
-import { supabase } from '../../services/supabase';
+// Navigation for Forgot Password and Signup
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleLogin = async () => {
-        const { user, error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
-        if (error) console.log('Error logging in:', error);
-        else console.log('User logged in:', user);
-    };
+const LoginScreen = () => {
+    const navigation = useNavigation();
 
     return (
-        <div>
-            <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={handleLogin}>Log In</button>
-        </div>
+        <View>
+            <Text>Login Screen</Text>
+            <Button title='Forgot Password' onPress={() => navigation.navigate('(auth)/forgot-password')} />
+            <Button title='Signup' onPress={() => navigation.navigate('(auth)/signup')} />
+        </View>
     );
 };
 
-export default Login;
+export default LoginScreen;
